@@ -5,7 +5,7 @@ Requirements: node.js, npm, webpack, cross-env
 
 ## Example Usage
 
-In your [wercker.yml](http://devcenter.wercker.com/articles/werckeryml/) file under the `build` section:
+In your [wercker.yml](http://devcenter.wercker.com/docs/wercker-yml/yaml-syntax.html) file under the `build` section:
 
 ``` bash
 build:
