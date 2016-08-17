@@ -10,7 +10,7 @@ In your [wercker.yml](http://devcenter.wercker.com/articles/werckeryml/) file un
 ``` bash
 build:
   steps:
-    - mitelone/webpack@0.0.1:
+    - mitelone/webpack@0.0.6:
     	config-file: mywebpack.config.js
 ```
 
