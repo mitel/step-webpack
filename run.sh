@@ -39,9 +39,36 @@ else
     webpack_command="webpack"
 fi
 
+# Second make sure cross-env is installed
+if [ -n "$WERCKER_WEBPACK_NODE_ENV" ] ; then
+    if ! type cross-env &> /dev/null ; then
+        # Check if it is in the local node_modules repo
+        if ! $(npm_package_is_installed cross-env) ; then
+            info "cross-env is not installed, trying to install it through npm"
+
+            if ! type npm &> /dev/null ; then
+                fail "npm not found, make sure you have npm or webpack installed"
+            else
+                info "npm is available"
+                debug "npm version: $(npm --version)"
+
+                info "installing cross-env"
+                sudo npm install -g cross-env
+                cross_env_command="cross-env"
+            fi
+        else
+            info "cross-env is available locally"
+            cross_env_command="./node_modules/cross-env/bin/cross-env.js"
+        fi
+    else
+        info "cross-env is available"
+        cross_env_command="cross-env"
+    fi
+fi
+
 # Parse some variable arguments
 if [ -n "$WERCKER_WEBPACK_NODE_ENV" ] ; then
-    webpack_command="NODE_ENV=$WERCKER_WEBPACK_NODE_ENV $webpack_command"
+    webpack_command="$cross_env_command NODE_ENV=$WERCKER_WEBPACK_NODE_ENV $webpack_command"
 fi
 
 if [ "$WERCKER_WEBPACK_VERBOSE" = "true" ] ; then
