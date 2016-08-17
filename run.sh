@@ -40,7 +40,7 @@ else
 fi
 
 # Parse some variable arguments
-if [ -n "$WERCKER_WEBPACK_NODE_ENV"] ; then
+if [ -n "$WERCKER_WEBPACK_NODE_ENV" ] ; then
     webpack_command="NODE_ENV=$WERCKER_WEBPACK_NODE_ENV $webpack_command"
 fi
 
