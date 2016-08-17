@@ -1,0 +1,26 @@
+name: webpack
+version: 0.0.3
+description: webpack step
+keywords:
+  - javascript
+  - webpack
+properties:
+  node-env:
+    type: string
+    required: false
+  config-file:
+    type: string
+    required: false
+  verbose:
+    type: boolean
+    required: false
+    default: false
+  colors:
+    type: boolean
+    required: false
+    default: false
+  display-error-details:
+    type: boolean
+    required: false
+    default: false
+  
